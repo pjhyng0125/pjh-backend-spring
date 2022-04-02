@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -19,10 +20,11 @@ class MemberServiceIntegrationTest {
     @Autowired MemberRepository memberRepository;
 
     @Test
+    @Commit
     void 회원가입() {
         //given
         Member m = new Member();
-        m.setName("hello2");
+        m.setName("jpa test commit except");
 
         // when
         Long saveId = memberService.join(m);
