@@ -22,7 +22,7 @@ class MemberServiceIntegrationTest {
     void 회원가입() {
         //given
         Member m = new Member();
-        m.setName("hello");
+        m.setName("hello2");
 
         // when
         Long saveId = memberService.join(m);
