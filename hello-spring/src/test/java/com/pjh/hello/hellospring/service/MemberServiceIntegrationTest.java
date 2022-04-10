@@ -20,11 +20,11 @@ class MemberServiceIntegrationTest {
     @Autowired MemberRepository memberRepository;
 
     @Test
-    @Commit
+//    @Commit
     void 회원가입() {
         //given
         Member m = new Member();
-        m.setName("jpa test commit except");
+        m.setName("hello2");
 
         // when
         Long saveId = memberService.join(m);
