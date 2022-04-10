@@ -53,4 +53,11 @@ public class MemberService {
         return memberRepository.findById(memberId);
     }
 
+    /**
+     * 회원 조회 이름 조건
+     */
+    public Optional<Member> findByName(String name) {
+        return memberRepository.findByName(name);
+    }
+
 }

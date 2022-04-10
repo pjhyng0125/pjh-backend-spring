@@ -49,4 +49,11 @@ class MemberServiceIntegrationTest {
         IllegalStateException e = Assertions.assertThrows(IllegalStateException.class, () -> memberService.join(m2));
         Assertions.assertEquals(e.getMessage(), "이미 존재하는 회원입니다.");
     }
+
+    @Test
+    void 회원조회_이름조건() {
+        String searchName = "hello";
+        Member findMember = memberService.findByName(searchName).get();
+        Assertions.assertEquals("hello", findMember.getName());
+    }
 }
