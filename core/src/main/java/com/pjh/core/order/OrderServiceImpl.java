@@ -6,7 +6,10 @@ import com.pjh.core.discount.RateDiscountPolicy;
 import com.pjh.core.member.Member;
 import com.pjh.core.member.MemberRepository;
 import com.pjh.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     // DIP 위반 : 구현 클래스에 의존
@@ -18,6 +21,7 @@ public class OrderServiceImpl implements OrderService {
     private MemberRepository memberRepository;
     private DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
