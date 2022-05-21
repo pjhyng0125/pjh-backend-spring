@@ -1,15 +1,19 @@
 package com.pjh.core.order;
 
+import com.pjh.core.annotation.MainDiscountPolicy;
 import com.pjh.core.discount.DiscountPolicy;
 import com.pjh.core.discount.FixDiscountPolicy;
 import com.pjh.core.discount.RateDiscountPolicy;
 import com.pjh.core.member.Member;
 import com.pjh.core.member.MemberRepository;
 import com.pjh.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     // DIP 위반 : 구현 클래스에 의존
@@ -18,11 +22,11 @@ public class OrderServiceImpl implements OrderService {
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
     // DIP 충족 : 인터페이스에만 의존
-    private MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }

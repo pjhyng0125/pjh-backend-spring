@@ -24,7 +24,7 @@ public class AppConfig {
         return new OrderServiceImpl(getMemberRepository(), getDiscountPolicy());
     }
 
-    @Bean
+//    @Bean
     public MemberRepository getMemberRepository() {
         return new MemoryMemberRepository();
     }
