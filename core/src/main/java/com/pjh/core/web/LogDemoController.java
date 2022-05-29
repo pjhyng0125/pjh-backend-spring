@@ -14,13 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 public class LogDemoController {
 
     private final LogDemoService logDemoService;
-    private final ObjectProvider<MyLogger> myLoggerProvider;
+//    private final ObjectProvider<MyLogger> myLoggerProvider;
+    private final MyLogger myLogger;
 
     @RequestMapping("log-demo")
     @ResponseBody // 문자 그대로 응답 가능
     public String legDemo(HttpServletRequest req) {
         String reqestURL = req.getRequestURL().toString();
-        MyLogger myLogger = myLoggerProvider.getObject();
+
+        System.out.println("LogDemoController.legDemo : " + myLogger.getClass());
+        // LogDemoController.legDemo : class com.pjh.core.common.MyLogger$$EnhancerBySpringCGLIB$$d0b9c4dc
+
+//        MyLogger myLogger = myLoggerProvider.getObject();
         myLogger.setRequestURL(reqestURL);
 
         myLogger.log("controller test!");
